@@ -17,13 +17,43 @@ public class MyTree {
 
     public void inOrder(Node root) {
 
-        if(root.leftChild!=null)
-        inOrder(root.leftChild);
+        if (root.leftChild != null)
+            inOrder(root.leftChild);
 
         System.out.println(root.data);
 
-        if(root.rightChild!=null)
-        inOrder(root.rightChild);
+        if (root.rightChild != null)
+            inOrder(root.rightChild);
+
+    }
+
+
+    public void preOrder(Node root) {
+
+        System.out.println(root.data);
+
+
+        if (root.leftChild != null)
+            inOrder(root.leftChild);
+
+
+        if (root.rightChild != null)
+            inOrder(root.rightChild);
+
+    }
+
+
+    public void postOrder(Node root) {
+
+
+        if (root.leftChild != null)
+            inOrder(root.leftChild);
+
+
+        if (root.rightChild != null)
+            inOrder(root.rightChild);
+
+        System.out.println(root.data);
 
     }
 
@@ -44,16 +74,32 @@ public class MyTree {
 
         myTree.rootNode.rightChild = node2;
 
-        myTree.rootNode.leftChild.leftChild = new Node(4);
+      /*  myTree.rootNode.leftChild.leftChild = new Node(4);
 
         myTree.rootNode.leftChild.rightChild = new Node(5);
 
         myTree.rootNode.rightChild.leftChild = new Node(6);
 
-        myTree.rootNode.rightChild.rightChild = new Node(7);
+        myTree.rootNode.rightChild.rightChild = new Node(7);*/
 
 
         myTree.inOrder(myTree.rootNode);
+
+        System.out.println();
+
+        System.out.println();
+
+        System.out.println();
+
+        myTree.preOrder(myTree.rootNode);
+
+        System.out.println();
+
+        System.out.println();
+
+        System.out.println();
+
+        myTree.postOrder(myTree.rootNode);
 
 
     }
