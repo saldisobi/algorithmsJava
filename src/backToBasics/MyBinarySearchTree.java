@@ -132,7 +132,7 @@ public class MyBinarySearchTree {
         tree.levelOrderIterative();
 
          tree = new MyBinarySearchTree();
-         
+
         tree.insertRecursive(tree.rootNode, 8);
 
         tree.insertRecursive(tree.rootNode, 3);
