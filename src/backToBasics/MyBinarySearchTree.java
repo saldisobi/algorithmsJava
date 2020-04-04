@@ -17,6 +17,27 @@ public class MyBinarySearchTree {
         }
     }
 
+    public Node insertRecursive(Node root, int data) {
+        Node node = new Node(data);
+        if (root == null) {
+            if (rootNode == null)
+                rootNode = node;
+            return node;
+        }
+
+        if (data < root.data) {
+            root.leftChild = insertRecursive(root.leftChild, data);
+
+        } else if (data > root.data) {
+            root.rightChild = insertRecursive(root.rightChild, data);
+
+        } else {
+            throw new RuntimeException("Duplicates not allowed");
+        }
+
+        return root;
+    }
+
     public void insert(int data) {
         System.out.println("command to print " + data);
         Node node = new Node(data);
@@ -34,7 +55,7 @@ public class MyBinarySearchTree {
                     current.leftChild = node;
                     return;
                 } else {
-                    System.out.println("left child was not null current is now "+current.leftChild.data);
+                    System.out.println("left child was not null current is now " + current.leftChild.data);
                     current = current.leftChild;
                 }
             } else if (data > current.data) {
@@ -45,7 +66,7 @@ public class MyBinarySearchTree {
                     current.rightChild = node;
                     return;
                 } else {
-                //    System.out.println("right child was not null current is now "+current.leftChild.data);
+                    //    System.out.println("right child was not null current is now "+current.leftChild.data);
                     current = current.rightChild;
                 }
             } else {
@@ -89,7 +110,7 @@ public class MyBinarySearchTree {
 
     public static void main(String args[]) {
         MyBinarySearchTree tree = new MyBinarySearchTree();
-        tree.insert(8);
+    tree.insert(8);
 
         tree.insert(3);
 
@@ -107,6 +128,29 @@ public class MyBinarySearchTree {
         tree.insert(7);
 
         tree.insert(13);
+
+        tree.levelOrderIterative();
+
+         tree = new MyBinarySearchTree();
+         
+        tree.insertRecursive(tree.rootNode, 8);
+
+        tree.insertRecursive(tree.rootNode, 3);
+
+        tree.insertRecursive(tree.rootNode, 10);
+
+
+        tree.insertRecursive(tree.rootNode, 1);
+
+        tree.insertRecursive(tree.rootNode, 6);
+
+        tree.insertRecursive(tree.rootNode, 14);
+
+        tree.insertRecursive(tree.rootNode, 4);
+
+        tree.insertRecursive(tree.rootNode, 7);
+
+        tree.insertRecursive(tree.rootNode, 13);
 
         tree.levelOrderIterative();
     }
