@@ -5,12 +5,6 @@ import java.util.Map;
 
 public class MyTrie {
 
-    class TrieNode {
-        Map<Character, TrieNode> characterMap = new HashMap<>();
-        boolean endOfWord = false;
-    }
-
-
     private TrieNode mRootTrieNode;
 
     MyTrie() {
@@ -40,7 +34,6 @@ public class MyTrie {
 
 
     public boolean contains(String word) {
-
         return contains(0, mRootTrieNode, word);
     }
 
@@ -83,8 +76,13 @@ public class MyTrie {
             //word does not exist
             return false;
         }
-
         return false;
+    }
+
+
+    class TrieNode {
+        Map<Character, TrieNode> characterMap = new HashMap<>();
+        boolean endOfWord = false;
     }
 
     public static void main(String args[]) {

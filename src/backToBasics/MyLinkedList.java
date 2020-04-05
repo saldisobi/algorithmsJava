@@ -7,15 +7,32 @@ public class MyLinkedList {
 
     private class Node {
         int data;
+        String key; //using this for hashmap implementation in original not needed
         Node next;
 
         Node(int data) {
             this.data = data;
         }
+
+        Node(String key, int data) {
+            this.data = data;
+            this.key = key;
+        }
     }
 
     private void add(int data) {
         Node node = new Node(data);
+        if (head == null) {
+            head = node;
+            current = node;
+        } else {
+            current.next = node;
+            current = current.next;
+        }
+    }
+
+    public void add(String key, int data) {
+        Node node = new Node(key, data);
         if (head == null) {
             head = node;
             current = node;
@@ -44,6 +61,26 @@ public class MyLinkedList {
             current = current.next;
         }
 
+    }
+
+    public int getByData(String searchTerm) {
+
+        if (head.key == searchTerm) {
+
+            return head.data;
+        }
+
+        Node current = head;
+
+
+        while (current.next != null) {
+            if (current.next.key == searchTerm) {
+                return current.next.data;
+            }
+            current = current.next;
+        }
+
+        return -1;
     }
 
 
@@ -87,7 +124,7 @@ public class MyLinkedList {
 
         while (current != null) {
 
-            if(counter == n-1){
+            if (counter == n - 1) {
                 current.next = current.next.next;
                 return;
             }
@@ -112,12 +149,12 @@ public class MyLinkedList {
         myLinkedList.add(8);
         myLinkedList.add(9);
         myLinkedList.add(10);
-       // myLinkedList.deleteByData(1);
+        // myLinkedList.deleteByData(1);
 
         myLinkedList.deleteNth(4);
         myLinkedList.printAllNodes();
         System.out.println();
-      //  System.out.println(myLinkedList.kToLast(3));
+        //  System.out.println(myLinkedList.kToLast(3));
 
 
     }

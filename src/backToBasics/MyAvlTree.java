@@ -7,24 +7,12 @@ public class MyAvlTree {
 
     private AvlNode mRootNode;
 
-    private class AvlNode {
-        AvlNode leftNode;
-        AvlNode rightNode;
-        int data;
-        int height = 1;
-
-        AvlNode(int data) {
-            this.data = data;
-        }
-    }
-
 
     public int getHeight(AvlNode node) {
         if (node == null)
             return 0;
         else
             return node.height;
-
     }
 
     private AvlNode checkAndFixBalance(int balancedFactor, AvlNode root, int data) {
@@ -48,7 +36,6 @@ public class MyAvlTree {
 
         return root;
     }
-
 
     private AvlNode rotateRight(AvlNode root) {
 
@@ -122,6 +109,11 @@ public class MyAvlTree {
         return node;
     }
 
+    private void insert(int i) {
+        AvlNode node = new AvlNode(i);
+        insert(mRootNode, node);
+    }
+
     public void levelOrderIterative() {
         Queue<AvlNode> myQueue = new LinkedList();
         myQueue.add(mRootNode);
@@ -150,6 +142,17 @@ public class MyAvlTree {
         }
     }
 
+    private class AvlNode {
+        AvlNode leftNode;
+        AvlNode rightNode;
+        int data;
+        int height = 1;
+
+        AvlNode(int data) {
+            this.data = data;
+        }
+    }
+
     public static void main(String args[]) {
 
         MyAvlTree myAvlTree = new MyAvlTree();
@@ -165,10 +168,4 @@ public class MyAvlTree {
         myAvlTree.levelOrderIterative();
 
     }
-
-    private void insert(int i) {
-        AvlNode node = new AvlNode(i);
-        insert(mRootNode, node);
-    }
-
 }
