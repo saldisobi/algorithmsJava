@@ -55,7 +55,36 @@ public class MyTrie {
         } else {
             return false;
         }
+    }
 
+
+    public boolean deleteWord(String word) {
+        return delete(0, mRootTrieNode, word);
+    }
+
+    private boolean delete(int i, TrieNode node, String word) {
+        if (i == word.length()) {
+            if (!node.endOfWord) {
+                return false;
+            }
+
+            node.endOfWord = false;
+
+            return node.characterMap.size() == 0;
+        }
+        if (node.characterMap.containsKey(word.charAt(i))) {
+            node = node.characterMap.get(word.charAt(i));
+            i++;
+            if (delete(i, node, word)) {
+                node.characterMap.remove(word.charAt(i - 1));
+                return node.characterMap.size() == 0;
+            }
+        } else {
+            //word does not exist
+            return false;
+        }
+
+        return false;
     }
 
     public static void main(String args[]) {
@@ -65,9 +94,12 @@ public class MyTrie {
         myTrie.insertWord("abg");
         myTrie.insertWord("saldi");
         myTrie.insertWord("abgd");
-
         System.out.println(myTrie.contains("saldi"));
-
-        System.out.println(myTrie.contains("ab"));
+        System.out.println(myTrie.contains("abg"));
+        myTrie.deleteWord("abg");
+        System.out.println(myTrie.contains("abg"));
+        System.out.println(myTrie.contains("saldi"));
+        myTrie.deleteWord("saldi");
+        System.out.println(myTrie.contains("saldi"));
     }
 }
