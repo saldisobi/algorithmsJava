@@ -20,7 +20,7 @@ public class MyLinkedList {
         }
     }
 
-    private void add(int data) {
+    public void add(int data) {
         Node node = new Node(data);
         if (head == null) {
             head = node;
@@ -82,6 +82,29 @@ public class MyLinkedList {
 
         return -1;
     }
+
+
+    public int getByData(int searchTerm) {
+
+        if (head.data == searchTerm) {
+
+            return head.data;
+        }
+
+        Node current = head;
+
+
+        while (current.next != null) {
+            if (current.next.data == searchTerm) {
+                return current.next.data;
+            }
+            current = current.next;
+        }
+
+        return -1;
+    }
+
+
 
 
     public void printAllNodes() {
