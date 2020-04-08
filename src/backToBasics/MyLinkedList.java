@@ -5,7 +5,7 @@ public class MyLinkedList {
     Node head;
     Node current;
 
-    private class Node {
+    public class Node {
         int data;
         String key; //using this for hashmap implementation in original not needed
         Node next;
