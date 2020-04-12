@@ -222,6 +222,83 @@ public class MyTree {
     }
 
 
+    public void zigZagTraversal() {
+        // this is not working as expected, will need stack here, writing other function
+        boolean leftToRight = true;
+        Queue<Node> myQueue = new LinkedList<>();
+        myQueue.offer(null);
+        myQueue.offer(rootNode);
+        int consecutiveNullCounter = 0;
+        while (!myQueue.isEmpty()) {
+            Node currentNode = myQueue.poll();
+            if (currentNode == null && consecutiveNullCounter == 0) {
+                consecutiveNullCounter++;
+                leftToRight = !leftToRight;
+                myQueue.add(null);
+                System.out.println();
+            } else {
+                consecutiveNullCounter = 0;
+                System.out.print(currentNode.data);
+                if (leftToRight) {
+                    if (currentNode.leftChild != null)
+                        myQueue.add(currentNode.leftChild);
+                    if (currentNode.rightChild != null) {
+                        myQueue.add(currentNode.rightChild);
+                    }
+                } else {
+                    if (currentNode.rightChild != null)
+                        myQueue.add(currentNode.rightChild);
+                    if (currentNode.leftChild != null) {
+                        myQueue.add(currentNode.leftChild);
+                    }
+                }
+            }
+        }
+
+    }
+
+
+    public void stackZigZag() {
+        Stack<Node> stackOne = new Stack<>();
+
+        Stack<Node> stackTwo = new Stack<>();
+        stackOne.push(rootNode);
+
+        boolean leftToRight = true;
+
+        while (!stackOne.isEmpty() || !stackTwo.isEmpty()) {
+
+            Node currentNode = null;
+            if (leftToRight && !stackOne.isEmpty()) {
+                currentNode = stackOne.pop();
+            } else if (leftToRight && stackOne.isEmpty()) {
+                System.out.println();
+                leftToRight = false;
+                currentNode = stackTwo.pop();
+            } else if (stackTwo.isEmpty()) {
+                System.out.println();
+                leftToRight = true;
+                currentNode = stackOne.pop();
+            } else if (!stackTwo.isEmpty()) {
+                currentNode = stackTwo.pop();
+            }
+
+            System.out.print(currentNode.data);
+            if (leftToRight) {
+                if (currentNode.leftChild != null)
+                    stackTwo.add(currentNode.leftChild);
+                if (currentNode.rightChild != null)
+                    stackTwo.add(currentNode.rightChild);
+            } else {
+                if (currentNode.rightChild != null)
+                    stackOne.add(currentNode.rightChild);
+                if (currentNode.leftChild != null)
+                    stackOne.add(currentNode.leftChild);
+            }
+        }
+    }
+
+
     public static void main(String args[]) {
 
         MyTree tree = new MyTree();
@@ -276,16 +353,12 @@ public class MyTree {
 
         tree.postOrderIterative();*/
 
-        tree.postOrder(tree.rootNode);
+        //tree.postOrder(tree.rootNode);
 
 
         System.out.println("here begind new");
-        tree.practiceTwoPostOrder();
-
-
+        tree.stackZigZag();
     }
-
-
 }
 
 
