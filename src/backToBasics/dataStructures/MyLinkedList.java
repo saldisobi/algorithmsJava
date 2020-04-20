@@ -1,4 +1,4 @@
-package backToBasics;
+package backToBasics.dataStructures;
 
 public class MyLinkedList {
 

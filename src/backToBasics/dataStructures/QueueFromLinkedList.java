@@ -1,12 +1,15 @@
-package backToBasics;
+package backToBasics.dataStructures;
 
-public class StackFromLinkedList {
+public class QueueFromLinkedList {
 
-    Node top;
+    Node head;
+
+    Node tail;
 
     class Node {
         int data;
         Node previous;
+        Node next;
 
         Node(int data) {
             this.data = data;
@@ -21,27 +24,29 @@ public class StackFromLinkedList {
 
     void push(int data) {
 
-        if (top == null) {
+        if (head == null) {
             Node node = new Node(data);
-            top = node;
+            head = node;
+            tail = node;
         } else {
-            Node node = new Node(data, top);
-            top = node;
+            Node node = new Node(data, head);
+            head.next = node;
+            head = node;
         }
     }
 
     int peek() {
 
-        System.out.println(top.data + "");
-        return top.data;
+        System.out.println(tail.data + "");
+        return tail.data;
     }
 
     void pop() {
-        top = top.previous;
+        tail = tail.next;
     }
 
     public static void main(String args[]) {
-        StackFromLinkedList stackFromLinkedList = new StackFromLinkedList();
+        QueueFromLinkedList stackFromLinkedList = new QueueFromLinkedList();
         stackFromLinkedList.push(1);
         stackFromLinkedList.push(12);
         stackFromLinkedList.push(31);
@@ -57,6 +62,25 @@ public class StackFromLinkedList {
         stackFromLinkedList.push(222);
 
         stackFromLinkedList.peek();
+
+        stackFromLinkedList.pop();
+
+        stackFromLinkedList.pop();
+
+        stackFromLinkedList.peek();
+
+        stackFromLinkedList.pop();
+
+        stackFromLinkedList.peek();
+
+        stackFromLinkedList.pop();
+
+        stackFromLinkedList.peek();
+
+        stackFromLinkedList.pop();
+
+        stackFromLinkedList.peek();
+
 
 
     }

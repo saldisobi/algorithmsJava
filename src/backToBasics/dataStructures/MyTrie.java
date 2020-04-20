@@ -1,4 +1,4 @@
-package backToBasics;
+package backToBasics.dataStructures;
 
 import java.util.HashMap;
 import java.util.Map;

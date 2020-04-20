@@ -1,8 +1,6 @@
 package backToBasics.tree;
 
 
-import backToBasics.MyTree;
-
 import java.util.LinkedList;
 import java.util.Queue;
 

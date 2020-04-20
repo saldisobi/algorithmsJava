@@ -1,6 +1,4 @@
-package backToBasics;
-
-import java.util.HashMap;
+package backToBasics.dataStructures;
 
 public class MyHashMap {
 

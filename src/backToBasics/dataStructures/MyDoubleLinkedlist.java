@@ -1,6 +1,4 @@
-package backToBasics;
-
-import linkedlist.MyDoublyLinkedList;
+package backToBasics.dataStructures;
 
 public class MyDoubleLinkedlist {
 
