@@ -1,4 +1,4 @@
-package leetcode100;
+package leetcode100.arraystring;
 
 public class FIncreasingTripletSubSequence {
 
