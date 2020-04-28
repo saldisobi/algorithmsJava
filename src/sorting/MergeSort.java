@@ -6,7 +6,7 @@ import java.lang.reflect.Array;
 
 public class MergeSort {
 
-    private void mergeSort(int[] nums, int startIndex, int endIndex) {
+    public void mergeSort(int[] nums, int startIndex, int endIndex) {
 
         if (startIndex < endIndex) {
             int median = (startIndex + endIndex) / 2;
