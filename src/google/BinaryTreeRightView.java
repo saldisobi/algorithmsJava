@@ -39,7 +39,7 @@ public class BinaryTreeRightView {
             TreeNode treeNode1 = queue.remove();
             if(treeNode1==null)
                 return;
-           
+
             if (treeNode1.left != null)
                 queue.add(treeNode1.left);
             if (treeNode1.right != null)
